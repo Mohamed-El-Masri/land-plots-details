@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل رخص البناء - المملكة العربية السعودية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/land-cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <img src="./modon.png" alt="شعار الشركة">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#overview">نظرة عامة</a></li>
+                <li><a href="#lands">قطع الأراضي</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>تحويل رخص البناء من تجاري إلى سكني</h1>
+            <p>مشروع نموذجي لتطوير 15 قطعة أرض في المملكة العربية السعودية</p>
+            <a href="#overview" class="cta-button">تعرف على المشروع</a>
+        </div>
+    </section>
+
+    <!-- نظرة عامة -->
+    <section id="overview" class="overview">
+        <div class="container">
+            <h2>نظرة عامة على المشروع</h2>
+            <div class="overview-grid">
+                <!-- كرت المساحة -->
+                <div class="overview-card">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>المساحة الإجمالية</h3>
+                    <p id="totalArea">250,000 متر مربع</p>
+                </div>
+                <!-- كرت تحويل الاستخدام -->
+                <div class="overview-card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>تحويل الاستخدام</h3>
+                    <p>من <span id="currentUse">تجاري</span> إلى <span id="proposedUse">سكني</span></p>
+                </div>
+                <!-- كرت عدد القطع -->
+                <div class="overview-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>عدد قطع الأراضي</h3>
+                    <p id="totalLands">15 قطعة</p>
+                </div>
+                <!-- كرت المستفيدين -->
+                <div class="overview-card">
+                    <i class="fas fa-users"></i>
+                    <h3>المستفيدون</h3>
+                    <p id="targetResidents">1500 عائلة</p>
+                </div>
+            </div>
+
+            <div class="overview-details">
+                <!-- التحديات الحالية -->
+                <div class="details-section challenges-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> التحديات الحالية</h3>
+                    <div class="challenges-categories">
+                        <!-- التحديات الاقتصادية -->
+                        <div class="challenge-category">
+                            <h4><i class="fas fa-chart-line"></i> تحديات اقتصادية</h4>
+                            <ul>
+                                <li><i class="fas fa-times-circle"></i> انخفاض العائد الاستثماري للأراضي التجارية</li>
+                                <li><i class="fas fa-times-circle"></i> ارتفاع تكاليف النقل للعمالة</li>
+                                <li><i class="fas fa-times-circle"></i> تراجع الطلب على المساحات التجارية</li>
+                                <li><i class="fas fa-times-circle"></i> خسائر مالية بسبب عدم الاستغلال</li>
+                            </ul>
+                        </div>
+                        <!-- التحديات الاجتماعية -->
+                        <div class="challenge-category">
+                            <h4><i class="fas fa-users"></i> تحديات اجتماعية</h4>
+                            <ul>
+                                <li><i class="fas fa-times-circle"></i> نقص السكن المناسب للعمالة</li>
+                                <li><i class="fas fa-times-circle"></i> تشتت مواقع سكن الموظفين</li>
+                                <li><i class="fas fa-times-circle"></i> صعوبة توفير خدمات متكاملة</li>
+                                <li><i class="fas fa-times-circle"></i> تأثير سلبي على جودة حياة العمال</li>
+                            </ul>
+                        </div>
+                        <!-- التحديات البيئية -->
+                        <div class="challenge-category">
+                            <h4><i class="fas fa-leaf"></i> تحديات بيئية</h4>
+                            <ul>
+                                <li><i class="fas fa-times-circle"></i> زيادة الانبعاثات الكربونية من وسائل النقل</li>
+                                <li><i class="fas fa-times-circle"></i> عدم كفاءة استخدام الموارد</li>
+                                <li><i class="fas fa-times-circle"></i> غياب المساحات الخضراء</li>
+                                <li><i class="fas fa-times-circle"></i> صعوبة تطبيق معايير الاستدامة</li>
+                            </ul>
+                        </div>
+                        <!-- التحديات التنظيمية -->
+                        <div class="challenge-category">
+                            <h4><i class="fas fa-building"></i> تحديات تنظيمية</h4>
+                            <ul>
+                                <li><i class="fas fa-times-circle"></i> تعقيد إجراءات تغيير الاستخدام</li>
+                                <li><i class="fas fa-times-circle"></i> صعوبة إدارة المرافق المشتركة</li>
+                                <li><i class="fas fa-times-circle"></i> تحديات في تنسيق الخدمات</li>
+                                <li><i class="fas fa-times-circle"></i> تعدد الجهات المعنية بالموافقات</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الجدول الزمني -->
+                <div class="details-section timeline">
+                    <h3><i class="fas fa-calendar-alt"></i> الجدول الزمني</h3>
+                    <div class="timeline-content">
+                        <div class="timeline-item">
+                            <i class="fas fa-check-circle"></i> مرحلة التخطيط والتصميم: 6 أشهر
+                        </div>
+                        <div class="timeline-item">
+                            <i class="fas fa-check-circle"></i> مرحلة البناء والتطوير: 24 شهر
+                        </div>
+                        <div class="timeline-item">
+                            <i class="fas fa-check-circle"></i> تاريخ الانتهاء المتوقع: 2026
+                        </div>
+                        <div class="timeline-item">
+                            <i class="fas fa-check-circle"></i> مرحلة التسليم والتشغيل: 3 أشهر
+                        </div>
+                        <div class="timeline-item">
+                            <i class="fas fa-check-circle"></i> فترة الضمان والمتابعة: 12 شهر
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الدوافع الاقتصادية -->
+                <div class="details-section economic-motivation">
+                    <h3><i class="fas fa-chart-line"></i> الدوافع الاقتصادية</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> خلق فرص عمل جديدة (800+ وظيفة)</li>
+                        <li><i class="fas fa-check-circle"></i> زيادة الاستثمارات المحلية (120 مليون ريال)</li>
+                        <li><i class="fas fa-check-circle"></i> تنشيط القطاع العقاري وزيادة القيمة 45%</li>
+                        <li><i class="fas fa-check-circle"></i> تحسين العائد الاستثماري السنوي</li>
+                        <li><i class="fas fa-check-circle"></i> خفض تكاليف التشغيل والصيانة</li>
+                    </ul>
+                </div>
+
+                <!-- الدوافع الاجتماعية -->
+                <div class="details-section social-motivation">
+                    <h3><i class="fas fa-users"></i> الدوافع الاجتماعية</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> تحسين جودة الحياة للموظفين وعائلاتهم</li>
+                        <li><i class="fas fa-check-circle"></i> توفير سكن مناسب ومستدام</li>
+                        <li><i class="fas fa-check-circle"></i> تعزيز التماسك الاجتماعي والمجتمعي</li>
+                        <li><i class="fas fa-check-circle"></i> تقليل وقت وتكلفة التنقل</li>
+                        <li><i class="fas fa-check-circle"></i> توفير مرافق ترفيهية واجتماعية</li>
+                    </ul>
+                </div>
+
+                <!-- الدوافع البيئية -->
+                <div class="details-section environmental-motivation">
+                    <h3><i class="fas fa-leaf"></i> الدوافع البيئية</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> تقليل التلوث البيئي والانبعاثات</li>
+                        <li><i class="fas fa-check-circle"></i> تحسين كفاءة استخدام الطاقة 40%</li>
+                        <li><i class="fas fa-check-circle"></i> زيادة المساحات الخضراء 50,000 م²</li>
+                        <li><i class="fas fa-check-circle"></i> تطبيق معايير المباني الخضراء</li>
+                        <li><i class="fas fa-check-circle"></i> تحسين إدارة النفايات والموارد</li>
+                    </ul>
+                </div>
+
+                <!-- الدوافع التنموية والهوية -->
+                <div class="details-section identity-motivation">
+                    <h3><i class="fas fa-flag"></i> الدوافع التنموية والهوية</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> تعزيز الهوية السعودية في التصميم العمراني</li>
+                        <li><i class="fas fa-check-circle"></i> تطبيق نمط العمارة الإسلامية التقليدية</li>
+                        <li><i class="fas fa-check-circle"></i> دعم السياحة الثقافية والتراثية</li>
+                        <li><i class="fas fa-check-circle"></i> تنمية الحرف والصناعات التقليدية</li>
+                        <li><i class="fas fa-check-circle"></i> تعزيز القيم الاجتماعية السعودية</li>
+                    </ul>
+                </div>
+
+                <!-- رؤية 2030 -->
+                <div class="details-section vision2030">
+                    <h3><i class="fas fa-star"></i> رؤية 2030</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> تحقيق أهداف التنمية المستدامة</li>
+                        <li><i class="fas fa-check-circle"></i> تحسين جودة الحياة وتطوير المدن</li>
+                        <li><i class="fas fa-check-circle"></i> تعزيز الاقتصاد المحلي والاستثمار</li>
+                        <li><i class="fas fa-check-circle"></i> دعم المشاريع الصغيرة والمتوسطة</li>
+                        <li><i class="fas fa-check-circle"></i> تطوير القطاع العقاري والإسكان</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قطع الأراضي -->
+    <section id="lands" class="lands">
+        <div class="container">
+            <h2>قطع الأراضي</h2>
+            <div class="lands-grid" id="landsGrid">
+                <!-- سيتم إضافة قطع الأراضي ديناميكياً -->
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن المشروع</h3>
+                    <p>مشروع تحويل رخص البناء من تجاري إلى سكني في المملكة العربية السعودية، يهدف إلى تحسين استخدام الأراضي وتوفير سكن مناسب للعمالة.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#overview">نظرة عامة</a></li>
+                        <li><a href="#lands">قطع الأراضي</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +966 50 000 0000</li>
+                        <li><i class="fas fa-envelope"></i> info@example.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- السكربتات -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/lands-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,601 @@
+/* تنسيقات بطاقات الأراضي */
+.lands-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 3rem 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.land-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.land-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.land-map {
+    height: 180px;
+    border-bottom: 3px solid var(--primary-color);
+    position: relative;
+    transition: height 0.3s ease;
+}
+
+.land-map::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+    pointer-events: none;
+}
+
+.land-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.land-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));
+    z-index: 1;
+}
+
+.land-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.land-card:hover .land-image img {
+    transform: scale(1.1);
+}
+
+.land-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.land-info h3 {
+    margin: 0 0 1.2rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.land-details {
+    margin-bottom: 1.5rem;
+    background: #f8f9fa;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.land-details p {
+    margin: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.land-details p:first-child {
+    margin-top: 0;
+}
+
+.land-details p:last-child {
+    margin-bottom: 0;
+}
+
+.land-details i {
+    color: var(--primary-color);
+    width: 24px;
+    font-size: 1.2rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.status.unused {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    animation: pulse 2s infinite;
+}
+
+.nearby-facilities {
+    display: none;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+    border: 1px solid #e9ecef;
+}
+
+.nearby-facilities h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nearby-facilities h4 i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.nearby-facilities ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nearby-facilities li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    transition: all 0.2s ease;
+}
+
+.nearby-facilities li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nearby-facilities li i {
+    color: var(--primary-color);
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.land-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 1.2rem;
+    padding-top: 1.5rem;
+}
+
+.land-actions .btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.land-actions .btn i {
+    font-size: 1.1rem;
+}
+
+.land-actions .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+}
+
+.land-actions .btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+.land-actions .btn-secondary {
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    border: 1px solid #dee2e6;
+}
+
+.land-actions .btn-secondary:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.land-expanded-content {
+    display: none;
+    padding: 2rem;
+    background: #fff;
+    border-top: 1px solid #e9ecef;
+}
+
+.land-card.expanded .land-expanded-content {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* تنسيقات المحتوى الموسع */
+.nearby-facilities-section,
+.challenges-section,
+.justifications-section,
+.vision2030-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.nearby-facilities-section h4,
+.challenges-section h4,
+.justifications-section h4,
+.vision2030-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nearby-facilities-section ul,
+.challenges-section ul,
+.vision2030-section ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تحديث أنماط البطاقة الموسعة */
+.land-card.expanded {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.land-card.expanded .main-content {
+    display: grid;
+    grid-template-columns: minmax(450px, 1fr) minmax(600px, 2fr);
+    gap: 0;
+}
+
+.land-card.expanded .land-map {
+    height: 100%;
+    min-height: 400px;
+}
+
+.land-card.expanded .land-info {
+    padding: 2rem;
+}
+
+.land-card.expanded .land-actions {
+    margin-top: 2rem;
+}
+
+.land-card.expanded .expand-card i {
+    transform: rotate(180deg);
+}
+
+/* تحديث التجاوب مع الشاشات المختلفة */
+@media (max-width: 1200px) {
+    .lands-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .land-card.expanded .main-content {
+        grid-template-columns: minmax(350px, 1fr) minmax(400px, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lands-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .land-card.expanded .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .land-card.expanded .land-map {
+        min-height: 300px;
+    }
+
+    .nearby-facilities-section ul,
+    .challenges-section ul,
+    .vision2030-section ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Justifications Section */
+.justification-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.justification-categories > div {
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.economic {
+    background-color: rgba(25, 135, 84, 0.1);
+}
+
+.social {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.environmental {
+    background-color: rgba(102, 16, 242, 0.1);
+}
+
+.justification-categories h5 {
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.justification-categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.justification-categories li {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    position: relative;
+    padding-right: 1.2rem;
+}
+
+.justification-categories li::before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: var(--primary-color);
+}
+
+/* Challenges Section */
+.challenges-section {
+    margin-bottom: 1.5rem;
+    background-color: rgba(220, 53, 69, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.challenges-section h4 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.challenges-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.challenges-section li {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.challenges-section i {
+    color: #dc3545;
+}
+
+/* Vision 2030 Section */
+.vision2030-section {
+    margin-top: 1.5rem;
+    background-color: rgba(255, 193, 7, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.vision2030-section h4 {
+    color: #ffc107;
+    margin-bottom: 1rem;
+}
+
+.vision2030-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vision2030-section li {
+    margin: 0.8rem 0;
+}
+
+.vision2030-section small {
+    display: block;
+    margin-top: 0.3rem;
+    color: #6c757d;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(25, 118, 210, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(25, 118, 210, 0);
+    }
+}
+
+/* نافذة الخريطة المنبثقة */
+.map-popup {
+    padding: 1.2rem;
+}
+
+.map-popup h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.map-popup p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.popup-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.8rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    width: 100%;
+    border: 2px solid var(--primary-color);
+}
+
+.popup-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+    border-color: var(--secondary-color);
+}
+
+/* Nearby Facilities Section */
+.nearby-facilities-section {
+    margin-bottom: 1.5rem;
+    background-color: rgba(13, 110, 253, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.nearby-facilities-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nearby-facilities-section h4 i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.nearby-facilities-section ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nearby-facilities-section li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid rgba(13, 110, 253, 0.2);
+    transition: all 0.2s ease;
+}
+
+.nearby-facilities-section li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nearby-facilities-section li i {
+    color: var(--primary-color);
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nearby-facilities-section li small {
+    color: #6c757d;
+    margin-right: auto;
+    font-size: 0.85rem;
+}
+
+/* Remove old nearby facilities styles */
+.nearby-facilities {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nearby-facilities-section ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .land-card.expanded .land-map {
+        height: 280px;
+    }
+    
+    .justification-categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .nearby-facilities-section ul {
+        grid-template-columns: 1fr;
+    }
+} 

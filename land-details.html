@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل قطعة الأرض - تحويل رخص البناء</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/land-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="شعار الشركة">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="index.html#overview">نظرة عامة</a></li>
+                <li><a href="index.html#lands">قطع الأراضي</a></li>
+                <li><a href="index.html#map">الخريطة</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- تفاصيل قطعة الأرض -->
+    <main class="land-details-page">
+        <div class="container">
+            <div class="land-header">
+                <h1 id="landName">قطعة أرض 1 - منطقة الصناعات</h1>
+                <div class="land-meta">
+                    <span><i class="fas fa-ruler-combined"></i> المساحة: <span id="landArea">10,000 متر مربع</span></span>
+                    <span><i class="fas fa-file-alt"></i> الرخصة الحالية: <span id="landLicense">رخصة تجارية رقم 12345</span></span>
+                    <span><i class="fas fa-info-circle"></i> الحالة: <span id="landStatus">غير مستغلة</span></span>
+                </div>
+            </div>
+
+            <div class="land-content">
+                <div class="land-section">
+                    <h2>الموقع والمرافق</h2>
+                    <div class="map-container" id="landMap"></div>
+                    <div class="facilities-grid">
+                        <div class="facility-card">
+                            <i class="fas fa-school"></i>
+                            <h3>المدارس</h3>
+                            <p>3 مدارس على مسافة قريبة</p>
+                        </div>
+                        <div class="facility-card">
+                            <i class="fas fa-hospital"></i>
+                            <h3>المستشفيات</h3>
+                            <p>2 مستشفى في المنطقة</p>
+                        </div>
+                        <div class="facility-card">
+                            <i class="fas fa-train"></i>
+                            <h3>النقل</h3>
+                            <p>محطة قطار قريبة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="land-section">
+                    <h2>المبررات الاقتصادية</h2>
+                    <div class="justification-grid">
+                        <div class="justification-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>تحسين القيمة العقارية</h3>
+                            <p>زيادة القيمة السوقية للمنطقة</p>
+                        </div>
+                        <div class="justification-card">
+                            <i class="fas fa-briefcase"></i>
+                            <h3>فرص عمل جديدة</h3>
+                            <p>خلق 50 فرصة عمل مباشرة</p>
+                        </div>
+                        <div class="justification-card">
+                            <i class="fas fa-handshake"></i>
+                            <h3>تنمية اقتصادية</h3>
+                            <p>تعزيز النشاط الاقتصادي المحلي</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="land-section">
+                    <h2>المبررات الاجتماعية</h2>
+                    <div class="social-impact">
+                        <div class="impact-item">
+                            <i class="fas fa-home"></i>
+                            <div class="impact-content">
+                                <h3>توفير سكن مناسب</h3>
+                                <p>توفير سكن مريح للعمالة مع مراعاة احتياجاتهم</p>
+                            </div>
+                        </div>
+                        <div class="impact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="impact-content">
+                                <h3>تقليل وقت التنقل</h3>
+                                <p>تقليل وقت التنقل للعمال وتحسين جودة حياتهم</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="land-section">
+                    <h2>المبررات البيئية</h2>
+                    <div class="environmental-impact">
+                        <div class="impact-grid">
+                            <div class="impact-card">
+                                <i class="fas fa-leaf"></i>
+                                <h3>تقليل التلوث</h3>
+                                <p>تقليل انبعاثات الكربون من خلال تقليل التنقل</p>
+                            </div>
+                            <div class="impact-card">
+                                <i class="fas fa-solar-panel"></i>
+                                <h3>كفاءة الطاقة</h3>
+                                <p>تطبيق أنظمة توفير الطاقة</p>
+                            </div>
+                            <div class="impact-card">
+                                <i class="fas fa-recycle"></i>
+                                <h3>إدارة النفايات</h3>
+                                <p>نظام متكامل لإدارة النفايات</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="land-section">
+                    <h2>التصميم المقترح</h2>
+                    <div class="design-preview">
+                        <div class="design-image">
+                            <img src="images/design-preview.jpg" alt="تصميم المجمع السكني">
+                        </div>
+                        <div class="design-features">
+                            <h3>المميزات الرئيسية</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> تصميم عصري يتناسب مع احتياجات العمالة</li>
+                                <li><i class="fas fa-check"></i> مساحات خضراء وحدائق</li>
+                                <li><i class="fas fa-check"></i> مواقف سيارات كافية</li>
+                                <li><i class="fas fa-check"></i> مرافق رياضية وترفيهية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- السكربتات -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/lands-data.js"></script>
+    <script src="js/land-details.js"></script>
+</body>
+</html> 
